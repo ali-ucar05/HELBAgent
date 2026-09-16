@@ -1,0 +1,48 @@
+.chat-bubble {
+    border-radius: 15px;
+    max-width: 70%;
+}
+
+.user-bubble {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: auto;
+}
+
+.ai-bubble {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+#discussion-chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+#discussion-chat::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#discussion-chat::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+#discussion-chat::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.form-control {
+    border-radius: 20px;
+    padding: 15px 20px;
+}
+
+.btn-primary {
+    border-radius: 20px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.alert {
+    border-radius: 15px;
+}

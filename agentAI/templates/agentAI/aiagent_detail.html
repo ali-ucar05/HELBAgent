@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<article class="media content-section">    
+    {% if object.image %}
+        <img class="rounded-circle article-img" src="{{ object.image.url }}">
+    {% endif %}
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{% url 'user-aiagent' object.author.username %}">
+                {{ object.author }}
+            </a>
+            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+
+            {% if object.author == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                   href="{% url 'aiagent-update' object.id %}">
+                   Update
+                </a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1"
+                   href="{% url 'aiagent-delete' object.id %}">
+                   Delete
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <h2 class="article-title">{{ object.name }}</h2>
+        <p class="article-content"><strong>Description : </strong>{{ object.description }}</p>
+        <p class="article-content"><strong>Initial prompt : </strong>{{ object.initial_prompt }}</p>
+        <p class="article-content"><strong>Model : </strong>{{ object.model }}</p>
+        <p class="article-content"><strong>Cooldown : </strong>{{ object.cooldown }}s</p>
+
+        <a class="btn btn-outline-info" href="{% url 'aiagent-discuss' pk=object.pk %}">Discuss</a>
+
+        {% if object.author == user %}
+            <a class="btn btn-outline-info" href="{% url 'profile' %}">View {{ object.author.username }}'s profile</a>
+        {% else %}
+            <a class="btn btn-outline-info" href="{% url 'user-profile' object.author.username %}">
+                View {{ object.author.username }}'s profile
+            </a>
+        {% endif %}
+    </div>
+</article>
+{% endblock content %}

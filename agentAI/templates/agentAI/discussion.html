@@ -1,0 +1,53 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'agentAI/css/discussion.css' %}">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4 shadow">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ agent.image.url }}" class="rounded-circle mr-3" width="60" height="60" alt="{{ agent.name }}">
+                        <div>
+                            <h3 class="mb-1">{{ agent.name }}</h3>
+                            <p class="text-muted mb-0"><b>Description : </b>{{ agent.description }}</p>
+                            <p class="text-muted mb-0"><b>Initial prompt : </b>{{ agent.initial_prompt }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="card shadow mb-4">
+                <div class="card-body" style="height: 500px; overflow-y: auto;" id="discussion-chat" data-url="{% url 'fetch_chat_data' pk=agent.id %}" data-profile-url="{% url 'profile' %}">
+                </div>
+            </div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST" id="message-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ d_form.prompt }}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Send message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="{% static 'agentAI/scripts/reloaddiscussion.js' %}"></script>
+{% endblock %}

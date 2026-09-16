@@ -1,0 +1,44 @@
+.chat-container {
+    height: 450px;
+    overflow-y: auto;
+}
+
+.chat-bubble {
+    border-radius: 15px;
+    max-width: 70%;
+    padding: 15px 20px;
+}
+
+.user-bubble {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: auto;
+}
+
+.other-bubble {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.form-control {
+    border-radius: 20px;
+    padding: 14px 18px;
+}
+
+.btn-primary {
+    border-radius: 20px;
+    font-weight: bold;
+}

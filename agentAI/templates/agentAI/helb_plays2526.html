@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'agentAI/css/helb_plays2526.css' %}">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4 shadow">
+                <div class="card-body text-center">
+                    <h2 class="mb-3">HELBPlays (Yu-Gi-Oh!)</h2>
+                    <img src="https://helbplays2526.alwaysdata.net/frame.jpg" alt="HELBPlays" id="frame-image" class="img-fluid rounded-3 shadow-sm"style="max-height: 300px;">
+                </div>
+            </div>
+            <div class="card shadow mb-4">
+                <div class="card-body chat-container" id="discussion-chat" data-url="{% url 'chat' %}">
+                </div>
+            </div>
+           <div class="card shadow">
+                <div class="card-body">
+                    <form action="{% url 'send_chat' %}" class="d-flex">
+                        <input type="text" name="message" id="message-input" class="form-control me-3" placeholder="Tapez votre message..." required>
+                        <button type="submit" id="send-button" class="btn btn-primary px-4"> Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="{% static 'agentAI/scripts/reloadhelb_plays2526.js' %}"></script>
+{% endblock %}
